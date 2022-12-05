@@ -1,10 +1,11 @@
 <script setup>
+import Arrow from "@/Components/Arrow.vue";
 import LogoutImage from "@/Components/LogoutImage.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ProfileImage from "@/Components/ProfileImage.vue";
 import TextInput from "@/Components/TextInput.vue";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
 const contacts = ref([
@@ -59,7 +60,7 @@ const contacts = ref([
                     <h1 class="text-3xl font-semibold">Contacts</h1>
                     <NavLink
                         as="button"
-                        class="text-2xl text-gray-700 font-semibold"
+                        class="text-3xl text-gray-900 font-bold"
                         >+
                     </NavLink>
                 </div>
@@ -76,21 +77,22 @@ const contacts = ref([
 
         <div>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm text-gray-700">
+                <div class="bg-white overflow-hidden shadow-sm text-gray-900">
                     <div
                         v-for="contact in contacts"
                         :key="contact.id"
-                        class="flex items-center justify-between mx-auto even:bg-gray-200 p-2.5 px-3"
+                        class="even:bg-gray-200"
                     >
-                        <h1 class="text-lg p-1.5">
-                            {{ contact.name }}
-                        </h1>
-                        <NavLink
-                            as="button"
-                            class="text-lg text-gray-700 mr-1.5"
-                        >
+                        <Link>
+                            <div
+                                class="flex items-center justify-between mx-auto p-2.5 px-3"
                             >
-                        </NavLink>
+                                <h1 class="text-lg p-1.5">
+                                    {{ contact.name }}
+                                </h1>
+                                <Arrow />
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
