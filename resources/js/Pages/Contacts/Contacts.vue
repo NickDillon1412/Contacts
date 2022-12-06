@@ -1,5 +1,6 @@
 <script setup>
 import Arrow from "@/Components/Arrow.vue";
+import BlankUser from "@/Components/BlankUser.vue";
 import LogoutImage from "@/Components/LogoutImage.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ProfileImage from "@/Components/ProfileImage.vue";
@@ -32,8 +33,8 @@ const contacts = ref([
     <Head title="Contacts" />
 
     <AuthenticatedLayout>
-        <nav class="px-3.5 py-2">
-            <div class="flex justify-between max-w-7xl mt-1">
+        <nav class="px-3.5 py-2 bg-slate-800">
+            <div class="flex justify-between max-w-7xl">
                 <NavLink
                     :href="
                         route('profile.edit', $page.props.auth.user.username)
@@ -41,6 +42,9 @@ const contacts = ref([
                     :active="route().current('profile.edit')"
                     class="tracking-wide text-gray-700 font-semibold"
                     ><ProfileImage />
+                    <h1 class="text-white ml-1">
+                        {{ $page.props.auth.user.name }}
+                    </h1>
                 </NavLink>
                 <NavLink
                     :href="route('logout')"
@@ -52,23 +56,22 @@ const contacts = ref([
                 </NavLink>
             </div>
         </nav>
-        <div class="bg-gray-100 border-b border-gray-300">
+        <div class="bg-gray-100 border-b border-gray-300 mt-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div
-                    class="flex items-center justify-between mx-auto mb-2 mt-3"
+                    class="flex items-center justify-between text-center mx-auto mb-2"
                 >
                     <h1 class="text-3xl font-semibold">Contacts</h1>
                     <NavLink
                         as="button"
-                        class="text-3xl text-gray-900 font-bold"
-                        >+
+                        class="font-bold uppercase rounded-md bg-slate-700 border-2 border-slate-700 hover:border-2 hover:border-slate-700 hover:bg-white text-white hover:text-slate-700 py-1 px-1.5"
+                        >New
                     </NavLink>
                 </div>
                 <TextInput
                     id="search"
                     type="text"
-                    class="block w-full mb-3.5"
-                    required
+                    class="block w-full mb-6"
                     autocomplete=""
                     placeholder="Search..."
                 />
@@ -81,15 +84,20 @@ const contacts = ref([
                     <div
                         v-for="contact in contacts"
                         :key="contact.id"
-                        class="even:bg-gray-200"
+                        class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                     >
                         <Link>
                             <div
                                 class="flex items-center justify-between mx-auto p-2.5 px-3"
                             >
-                                <h1 class="text-lg p-1.5">
-                                    {{ contact.name }}
-                                </h1>
+                                <div
+                                    class="flex justify-center space-x-1 ml-0.5"
+                                >
+                                    <BlankUser />
+                                    <h1 class="text-lg p-1.5 py-2">
+                                        {{ contact.name }}
+                                    </h1>
+                                </div>
                                 <Arrow />
                             </div>
                         </Link>
