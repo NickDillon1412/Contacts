@@ -1,5 +1,5 @@
 <template>
-    <div class="py-1">
+    <div>
         <img src="@/../../resources/assets/logout.svg" alt="Profile" />
     </div>
 </template>
