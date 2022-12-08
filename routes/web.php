@@ -28,10 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/{user:username}/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/{user:username}/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/contacts', function () {
+        return Inertia::render('Contacts/Contacts');
+    })->name('contacts.list');
 });
 
-Route::get('/contacts', function () {
-    return Inertia::render('Contacts/Contacts');
-})->name('contacts.list');
 
 require __DIR__ . '/auth.php';

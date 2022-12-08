@@ -1,5 +1,4 @@
 <script setup>
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -24,18 +23,11 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
-    <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
-    >
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
-        </div>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
+    <div
+        class="min-h-screen flex flex-col items-center sm:pt-0 bg-gray-100 px-3 rounded-b-[30px]"
+    >
+        <h1 class="text-3xl mt-24 font-bold uppercase">Register</h1>
 
         <div
             class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
@@ -66,7 +58,6 @@ const submit = () => {
                         class="mt-1 block w-full"
                         v-model="form.username"
                         required
-                        autofocus
                         autocomplete="username"
                     />
 
