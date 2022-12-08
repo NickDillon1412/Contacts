@@ -3,11 +3,13 @@ import Nav from "@/Components/Nav.vue";
 </script>
 
 <template>
-    <div class="bg-white max-w-md justify-center mx-auto mt-8">
-        <div class="p-3 bg-gray-900 border-6 border-gray-900 rounded-[40px]">
-            <Nav class="rounded-t-[30px]" />
+    <div class="mt-8 px-3">
+        <div
+            class="justify-center items-center mx-auto border-[12px] rounded-[40px] max-w-2xl mb-8"
+        >
+            <Nav class="rounded-t-[24px]" />
 
-            <div class="bg-gray-100 rounded-b-[30px]">
+            <div class="bg-white rounded-b-[24px] min-h-screen">
                 <slot />
             </div>
         </div>

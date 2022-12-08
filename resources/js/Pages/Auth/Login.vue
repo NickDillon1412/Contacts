@@ -25,15 +25,22 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Log in" />
+    <Head title="Login" />
 
-    <div
-        class="min-h-screen flex flex-col items-center sm:pt-0 bg-gray-100 px-3 rounded-b-[30px]"
-    >
-        <h1 class="text-3xl font-semibold mt-40 uppercase">Login</h1>
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
-        >
+    <div class="flex flex-col items-center sm:pt-0 bg-white px-3">
+        <div class="mt-40 flex flex-col justify-center items-center">
+            <img src="@/../../resources/assets/lock.svg" class="mb-2" />
+            <h1 class="text-3xl font-bold">Login to your account</h1>
+            <div class="flex justify-center items-center mt-5">
+                <h3>Don't have an account yet?</h3>
+                <Link
+                    :href="route('register')"
+                    class="text-red-400 hover:underline ml-1 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >Register Here
+                </Link>
+            </div>
+        </div>
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden">
             <form @submit.prevent="submit">
                 <div>
                     <InputLabel for="email" value="Email" />
@@ -66,33 +73,33 @@ const submit = () => {
                     <InputError class="mt-2" :message="form.errors.password" />
                 </div>
 
-                <div class="block mt-4">
-                    <label class="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            v-model:checked="form.remember"
-                        />
-                        <span class="ml-2 text-sm text-gray-600"
-                            >Remember me</span
+                <div class="mt-4">
+                    <div class="flex justify-between">
+                        <label class="flex items-center">
+                            <Checkbox
+                                name="remember"
+                                v-model:checked="form.remember"
+                            />
+                            <span class="ml-2 text-sm text-gray-600"
+                                >Remember me</span
+                            >
+                        </label>
+                        <Link
+                            :href="route('password.request')"
+                            class="hover:underline text-sm text-red-400 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                    </label>
+                            Forgot your password?
+                        </Link>
+                    </div>
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <Link
-                        v-if="canResetPassword"
-                        :href="route('password.request')"
-                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Forgot your password?
-                    </Link>
-
+                <div class="flex items-center mt-4">
                     <PrimaryButton
-                        class="ml-4"
+                        class="flex justify-center w-full mt-3 py-2 bg-red-400 border-2 hover:bg-white hover:border-red-400 hover:text-red-400"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Log in
+                        Login
                     </PrimaryButton>
                 </div>
             </form>

@@ -40,15 +40,15 @@ const contactInitial = computed(() => {
 <template>
     <Head title="Contacts" />
 
-    <div class="min-h-screen pt-6">
-        <div class="mx-auto sm:px-6 lg:px-5 border-b">
+    <div class="pt-6">
+        <div class="mx-auto px-5 border-b">
             <div
                 class="flex items-center justify-between text-center mx-auto mb-2"
             >
                 <h1 class="text-3xl text-slate-800 font-semibold">Contacts</h1>
                 <NavLink
                     as="button"
-                    class="font-bold flex justify-center items-center rounded-full bg-slate-700 hover:bg-red-400 shadow-sm py-1.5 px-1.5"
+                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-red-300 shadow-sm py-1.5 px-1.5"
                     ><Plus />
                 </NavLink>
             </div>

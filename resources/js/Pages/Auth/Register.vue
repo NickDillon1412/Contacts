@@ -24,14 +24,10 @@ const submit = () => {
 <template>
     <Head title="Register" />
 
-    <div
-        class="min-h-screen flex flex-col items-center sm:pt-0 bg-gray-100 px-3 rounded-b-[30px]"
-    >
+    <div class="flex flex-col items-center sm:pt-0 px-3">
         <h1 class="text-3xl mt-24 font-bold uppercase">Register</h1>
 
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
-        >
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden">
             <form @submit.prevent="submit">
                 <div>
                     <InputLabel for="name" value="Name" />
@@ -115,22 +111,21 @@ const submit = () => {
                     />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <Link
-                        :href="route('login')"
-                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
-
+                <div class="flex items-center mt-4">
                     <PrimaryButton
-                        class="ml-4"
+                        class="flex justify-center w-full mt-3 py-2 bg-red-400 border-2 hover:bg-white hover:border-red-400 hover:text-red-400"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Register
                     </PrimaryButton>
                 </div>
+                <Link
+                    :href="route('login')"
+                    class="underline flex justify-center text-sm mt-4 text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    Already registered?
+                </Link>
             </form>
         </div>
     </div>
