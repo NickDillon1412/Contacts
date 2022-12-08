@@ -68,7 +68,7 @@ const contactInitial = computed(() => {
                     :key="contact.id"
                     class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                 >
-                    <Link>
+                    <Link :href="route('contact.edit')">
                         <div
                             class="flex items-center justify-between mx-auto p-2.5 px-3"
                         >

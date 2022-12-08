@@ -29,9 +29,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/{user:username}/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/contacts', function () {
-        return Inertia::render('Contacts/Contacts');
-    })->name('contacts.list');
+    Route::prefix('contacts')->group(function () {
+        Route::get('/contacts-list', function () {
+            return Inertia::render('Contacts/Contacts');
+        })->name('contacts.list');
+
+        Route::get('/contact/edit', function () {
+            return Inertia::render('Contacts/ContactEdit');
+        })->name('contact.edit');
+    });
 });
 
 
