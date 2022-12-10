@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
             return Inertia::render('Contacts/Contacts');
         })->name('contacts.list');
 
+        Route::get('/contact', function () {
+            return Inertia::render('Contacts/ContactCreate');
+        })->name('contact.create');
+
         Route::get('/contact/edit', function () {
             return Inertia::render('Contacts/ContactEdit');
         })->name('contact.edit');

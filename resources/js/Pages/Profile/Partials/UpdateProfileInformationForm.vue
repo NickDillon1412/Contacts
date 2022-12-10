@@ -108,7 +108,11 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton
+                    class="bg-gray-800 hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900"
+                    :disabled="form.processing"
+                    >Save</PrimaryButton
+                >
 
                 <Transition
                     enter-from-class="opacity-0"

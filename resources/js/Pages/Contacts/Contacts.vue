@@ -54,8 +54,9 @@ const filteredContacts = computed(() => {
             >
                 <h1 class="text-3xl text-slate-800 font-semibold">Contacts</h1>
                 <NavLink
+                    :href="route('contact.create')"
                     as="button"
-                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-white hover:border-2 hover:border-red-400 shadow-sm p-1"
+                    class="font-bold flex justify-center items-center rounded-full border-2 border-red-400 bg-red-400 hover:bg-gray-100 hover:border-2 hover:border-red-400 shadow-sm p-0.5"
                     ><PlusIcon
                         class="w-5 h-5 text-white hover:text-red-400 font-semibold"
                     />
