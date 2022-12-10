@@ -16,11 +16,11 @@ const form = useForm({
 <template>
     <Head title="Edit - Nick Dillon" />
 
-    <div class="pt-6">
+    <div class="pt-12">
         <div class="mx-auto px-5">
             <div class="text-center mx-auto">
                 <div class="flex justify-center">
-                    <BlankUser class="mb-2.5 w-20 h-20">N</BlankUser>
+                    <BlankUser class="mb-2.5 w-20 h-20 text-2xl">N</BlankUser>
                 </div>
                 <h1 class="text-3xl font-bold">Nick Dillon</h1>
             </div>
@@ -36,7 +36,6 @@ const form = useForm({
                             class="mt-1 block w-full"
                             v-model="form.name"
                             required
-                            autofocus
                             autocomplete="name"
                             placeholder="Nick Dillon"
                         />

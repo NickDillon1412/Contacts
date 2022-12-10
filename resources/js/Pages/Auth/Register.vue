@@ -24,8 +24,17 @@ const submit = () => {
 <template>
     <Head title="Register" />
 
-    <div class="flex flex-col items-center sm:pt-0 px-3">
+    <div class="flex flex-col items-center sm:pt-0 px-1">
         <h1 class="text-3xl mt-24 font-bold uppercase">Register</h1>
+        <div class="flex justify-center items-center mt-5">
+            <h1>Already registered?</h1>
+            <Link
+                :href="route('login')"
+                class="text-red-400 hover:underline ml-1 rounded-md focus:outline-none"
+            >
+                Login Here!
+            </Link>
+        </div>
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden">
             <form @submit.prevent="submit">
@@ -120,12 +129,6 @@ const submit = () => {
                         Register
                     </PrimaryButton>
                 </div>
-                <Link
-                    :href="route('login')"
-                    class="underline flex justify-center text-sm mt-4 text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Already registered?
-                </Link>
             </form>
         </div>
     </div>

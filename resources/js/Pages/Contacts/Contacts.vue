@@ -5,8 +5,9 @@ import NavLink from "@/Components/NavLink.vue";
 import Plus from "@/Components/Plus.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 
+const search = ref("");
 const contactList = reactive({
     contacts: [
         {
@@ -35,6 +36,12 @@ const contactInitial = computed(() => {
 
     return filteredInitials;
 });
+
+const filteredContacts = computed(() => {
+    return contactList.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(search.value.toLowerCase())
+    );
+});
 </script>
 
 <template>
@@ -48,7 +55,7 @@ const contactInitial = computed(() => {
                 <h1 class="text-3xl text-slate-800 font-semibold">Contacts</h1>
                 <NavLink
                     as="button"
-                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-red-300 shadow-sm py-1.5 px-1.5"
+                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-red-400 shadow-sm py-1.5 px-1.5"
                     ><Plus />
                 </NavLink>
             </div>
@@ -58,13 +65,14 @@ const contactInitial = computed(() => {
                 class="block w-full mb-6"
                 autocomplete=""
                 placeholder="Search..."
+                v-model="search"
             />
         </div>
 
         <div class="mx-auto">
             <div class="bg-white overflow-hidden text-slate-800">
                 <div
-                    v-for="(contact, i) in contactList.contacts"
+                    v-for="(contact, i) in filteredContacts"
                     :key="contact.id"
                     class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                 >

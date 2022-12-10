@@ -35,8 +35,8 @@ const submit = () => {
                 <h3>Don't have an account yet?</h3>
                 <Link
                     :href="route('register')"
-                    class="text-red-400 hover:underline ml-1 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >Register Here
+                    class="text-red-400 hover:underline ml-1 rounded-md focus:outline-none"
+                    >Register Here!
                 </Link>
             </div>
         </div>
