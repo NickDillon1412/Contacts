@@ -28,7 +28,7 @@ const submit = () => {
     <Head title="Login" />
 
     <div class="flex flex-col items-center sm:pt-0 bg-white px-3">
-        <div class="mt-40 flex flex-col justify-center items-center">
+        <div class="mt-16 flex flex-col justify-center items-center">
             <img src="@/../../resources/assets/lock.svg" class="mb-2" />
             <h1 class="text-3xl font-bold">Login to your account</h1>
             <div class="flex justify-center items-center mt-5">

@@ -24,8 +24,8 @@ const submit = () => {
 <template>
     <Head title="Register" />
 
-    <div class="flex flex-col items-center sm:pt-0 px-1">
-        <h1 class="text-3xl mt-24 font-bold uppercase">Register</h1>
+    <div class="flex flex-col items-center bg-white sm:pt-0 px-1 mb-10">
+        <h1 class="text-3xl mt-10 font-bold uppercase">Register</h1>
         <div class="flex justify-center items-center mt-5">
             <h1>Already registered?</h1>
             <Link

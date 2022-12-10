@@ -4,12 +4,12 @@ import Nav from "@/Components/Nav.vue";
 
 <template>
     <div
-        class="max-w-lg justify-center mx-auto text-center md:border-[10px] md:border-slate-900 min-h-screen rounded-[30px]"
+        class="md:max-w-sm justify-center mx-auto md:border-[10px] md:border-slate-900 min-h-screen rounded-[30px]"
     >
         <div class="bg-slate-900 relative">
             <div class="absolute top-0 inset-x-0 invisible md:visible">
                 <div
-                    class="bg-slate-900 rounded-b-[24px] h-5 w-36 mx-auto"
+                    class="bg-slate-900 rounded-b-[24px] h-4 w-36 mx-auto"
                 ></div>
             </div>
             <Nav />

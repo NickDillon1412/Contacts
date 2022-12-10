@@ -69,7 +69,7 @@ const back = () => window.history.back();
                     as="button"
                     class="tracking-wide cursor-pointer"
                     ><h1
-                        class="tracking-wide border-b-[3px] border-slate-700 hover:border-red-400 px-1 py-1"
+                        class="text-slate-800 tracking-wide border-b-[3px] border-slate-700 hover:border-red-400 px-1 py-1"
                     >
                         Register
                     </h1>

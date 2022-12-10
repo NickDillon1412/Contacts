@@ -16,8 +16,8 @@ const form = useForm({
 <template>
     <Head title="Edit - Nick Dillon" />
 
-    <div class="pt-12">
-        <div class="mx-auto px-5">
+    <div class="pt-12 bg-white">
+        <div class="mx-auto px-7">
             <div class="text-center mx-auto">
                 <div class="flex justify-center">
                     <BlankUser class="mb-2.5 w-20 h-20 text-2xl">N</BlankUser>

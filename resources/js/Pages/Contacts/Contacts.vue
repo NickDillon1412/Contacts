@@ -2,8 +2,8 @@
 import Arrow from "@/Components/Arrow.vue";
 import BlankUser from "@/Components/BlankUser.vue";
 import NavLink from "@/Components/NavLink.vue";
-import Plus from "@/Components/Plus.vue";
 import TextInput from "@/Components/TextInput.vue";
+import { PlusIcon } from "@heroicons/vue/24/outline";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { computed, reactive, ref } from "vue";
 
@@ -55,8 +55,10 @@ const filteredContacts = computed(() => {
                 <h1 class="text-3xl text-slate-800 font-semibold">Contacts</h1>
                 <NavLink
                     as="button"
-                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-red-400 shadow-sm py-1.5 px-1.5"
-                    ><Plus />
+                    class="font-bold flex justify-center items-center rounded-full bg-red-400 hover:bg-white hover:border-2 hover:border-red-400 shadow-sm p-1"
+                    ><PlusIcon
+                        class="w-5 h-5 text-white hover:text-red-400 font-semibold"
+                    />
                 </NavLink>
             </div>
             <TextInput
