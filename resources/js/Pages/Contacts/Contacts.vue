@@ -73,7 +73,7 @@ const contactInitial = computed(() => {
                             class="flex items-center justify-between mx-auto p-2.5 px-3"
                         >
                             <div class="flex justify-center space-x-1 ml-0.5">
-                                <BlankUser class="ml-1.5">{{
+                                <BlankUser class="ml-1.5 w-11 h-11">{{
                                     contactInitial[i]
                                 }}</BlankUser>
                                 <h1 class="text-lg p-1.5 py-2">

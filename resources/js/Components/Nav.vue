@@ -1,6 +1,6 @@
 <script setup>
+import { Cog8ToothIcon } from "@heroicons/vue/24/outline";
 import NavLink from "./NavLink.vue";
-import ProfileImage from "./ProfileImage.vue";
 const props = defineProps(["class"]);
 
 const back = () => window.history.back();
@@ -23,7 +23,7 @@ const back = () => window.history.back();
                     :active="route().current('profile.edit')"
                     as="button"
                     class="tracking-wide text-gray-700 font-semibold"
-                    ><ProfileImage class="px-0.5" />
+                    ><Cog8ToothIcon class="text-white w-5 h-5" />
                     <h1
                         class="text-white ml-1 border-b-2 border-slate-700 hover:border-red-400 px-0.5 py-1"
                     >

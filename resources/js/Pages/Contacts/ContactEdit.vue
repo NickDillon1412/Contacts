@@ -8,7 +8,6 @@ import { Head, useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
     name: "",
-    username: "",
     email: "",
     phone: "",
 });
@@ -19,13 +18,14 @@ const form = useForm({
 
     <div class="pt-6">
         <div class="mx-auto px-5">
-            <div
-                class="flex items-center justify-between text-center mx-auto mb-2"
-            ></div>
-            <BlankUser class="mb-2">N</BlankUser>
-            <h1 class="text-3xl font-bold">Nick Dillon</h1>
+            <div class="text-center mx-auto">
+                <div class="flex justify-center">
+                    <BlankUser class="mb-2.5 w-20 h-20">N</BlankUser>
+                </div>
+                <h1 class="text-3xl font-bold">Nick Dillon</h1>
+            </div>
 
-            <div class="w-full sm:max-w-md mt-4 py-4 overflow-hidden">
+            <div class="w-full sm:max-w-md mt-3.5 py-4 overflow-hidden">
                 <form @submit.prevent="submit">
                     <div>
                         <InputLabel for="name" value="Name" />
@@ -42,25 +42,6 @@ const form = useForm({
                         />
 
                         <InputError class="mt-2" :message="form.errors.name" />
-                    </div>
-
-                    <div class="mt-4">
-                        <InputLabel for="username" value="Username" />
-
-                        <TextInput
-                            id="username"
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="form.username"
-                            required
-                            autocomplete="username"
-                            placeholder="nickdillon1412"
-                        />
-
-                        <InputError
-                            class="mt-2"
-                            :message="form.errors.username"
-                        />
                     </div>
 
                     <div class="mt-4">
