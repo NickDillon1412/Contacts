@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,17 +31,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('contacts')->group(function () {
-        Route::get('/contacts-list', function () {
-            return Inertia::render('Contacts/Contacts');
-        })->name('contacts.list');
+        Route::get('/contacts-list', [ContactController::class, 'index'])->name('contacts.list');
 
-        Route::get('/contact', function () {
+        Route::get('/create-contact', function () {
             return Inertia::render('Contacts/ContactCreate');
         })->name('contact.create');
 
-        Route::get('/contact/edit', function () {
-            return Inertia::render('Contacts/ContactEdit');
-        })->name('contact.edit');
+        Route::post('/create-contact', [ContactController::class, 'store'])->name('contact.store');
+
+        Route::get('/{contact}/edit', [ContactController::class, 'edit'])->name('contact.edit');
+        Route::post('/{contact}/edit', [ContactController::class, 'update'])->name('contact.update');
+
+        Route::delete('/{contact}/delete', [ContactController::class, 'destroy'])->name('contact.destroy');
     });
 });
 

@@ -1,5 +1,6 @@
 <script setup>
 import BlankUser from "@/Components/BlankUser.vue";
+import ImageUpload from "@/Components/ImageUpload.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -7,10 +8,17 @@ import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
+    image: null,
     name: "",
     email: "",
     phone: "",
 });
+
+const submit = () => {
+    form.post(route("contact.store"), {
+        onFinish: () => form.reset("name", "email", "phone"),
+    });
+};
 </script>
 
 <template>
@@ -18,16 +26,28 @@ const form = useForm({
 
     <div class="pt-12 bg-white">
         <div class="mx-auto px-7">
-            <div class="text-center mx-auto">
-                <div class="flex justify-center">
-                    <BlankUser class="mb-2.5 w-20 h-20 text-2xl">N</BlankUser>
-                </div>
-                <h1 class="text-3xl font-bold">Nick Dillon</h1>
-            </div>
-
-            <div class="w-full sm:max-w-md mt-3.5 py-4 overflow-hidden">
+            <div class="w-full sm:max-w-md py-4 overflow-hidden">
                 <form @submit.prevent="submit">
                     <div>
+                        <div class="text-center mx-auto mb-6">
+                            <div
+                                class="flex flex-col items-center justify-center"
+                            >
+                                <label class="cursor-pointer">
+                                    <BlankUser
+                                        class="mb-2.5 w-20 h-20 text-2xl hover:border-2 hover:border-red-400 hover:bg-white"
+                                        ><ImageUpload />
+                                    </BlankUser>
+                                    <input
+                                        type="file"
+                                        @input="
+                                            form.image = $event.target.files[0]
+                                        "
+                                        class="hidden"
+                                    />
+                                </label>
+                            </div>
+                        </div>
                         <InputLabel for="name" value="Name" />
 
                         <TextInput
@@ -66,7 +86,7 @@ const form = useForm({
                             class="mt-1 block w-full"
                             v-model="form.phone"
                             required
-                            autocomplete="username"
+                            autocomplete="phone"
                         />
 
                         <InputError class="mt-2" :message="form.errors.phone" />

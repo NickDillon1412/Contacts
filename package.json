@@ -21,6 +21,7 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
-        "@heroicons/vue": "^2.0.13"
+        "@heroicons/vue": "^2.0.13",
+        "lodash.debounce": "^4.0.8"
     }
 }

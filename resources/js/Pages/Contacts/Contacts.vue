@@ -4,43 +4,38 @@ import BlankUser from "@/Components/BlankUser.vue";
 import NavLink from "@/Components/NavLink.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { PlusIcon } from "@heroicons/vue/24/outline";
+import { Inertia } from "@inertiajs/inertia";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-import { computed, reactive, ref } from "vue";
+import debounce from "lodash/debounce";
+import { computed, ref, watch } from "vue";
 
-const search = ref("");
-const contactList = reactive({
-    contacts: [
-        {
-            id: 1,
-            name: "Nick Dillon",
-        },
-        {
-            id: 2,
-            name: "Anna Dillon",
-        },
-        {
-            id: 3,
-            name: "Jacey Dillon",
-        },
-        {
-            id: 4,
-            name: "Brady Dillon",
-        },
-    ],
+const props = defineProps({
+    contacts: Object,
+    filters: Object,
 });
 
+const search = ref(props.filters.search);
+
+watch(
+    search,
+    debounce((value) => {
+        Inertia.get(
+            "/contacts/contacts-list",
+            { search: value },
+            {
+                preserveState: true,
+                replace: true,
+            }
+        );
+    }, 300)
+);
+
 const contactInitial = computed(() => {
-    const filteredInitials = contactList.contacts
+    const filteredInitials = props.contacts
         .filter((contact) => contact.name)
         .map((contact) => contact.name[0]);
 
     return filteredInitials;
-});
-
-const filteredContacts = computed(() => {
-    return contactList.contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(search.value.toLowerCase())
-    );
 });
 </script>
 
@@ -58,7 +53,7 @@ const filteredContacts = computed(() => {
                     as="button"
                     class="font-bold flex justify-center items-center rounded-full border-2 border-red-400 bg-red-400 hover:bg-gray-100 hover:border-2 hover:border-red-400 shadow-sm p-0.5"
                     ><PlusIcon
-                        class="w-5 h-5 text-white hover:text-red-400 font-semibold"
+                        class="w-5 h-5 text-white hover:text-red-400 font-semibold transition ease-in-out duration-150"
                     />
                 </NavLink>
             </div>
@@ -75,18 +70,26 @@ const filteredContacts = computed(() => {
         <div class="mx-auto">
             <div class="bg-white overflow-hidden text-slate-800">
                 <div
-                    v-for="(contact, i) in filteredContacts"
+                    v-for="(contact, i) in contacts"
                     :key="contact.id"
                     class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                 >
-                    <Link :href="route('contact.edit')">
+                    <Link :href="route('contact.edit', contact.id)">
                         <div
                             class="flex items-center justify-between mx-auto p-2.5 px-3"
                         >
                             <div class="flex justify-center space-x-1 ml-0.5">
-                                <BlankUser class="ml-1.5 w-11 h-11">{{
-                                    contactInitial[i]
-                                }}</BlankUser>
+                                <BlankUser
+                                    v-if="!contact.image"
+                                    class="mb-2.5 w-20 h-20 text-2xl"
+                                    >{{ contactInitial[i] }}</BlankUser
+                                >
+                                <img
+                                    v-else
+                                    :src="'/storage/' + contact.image"
+                                    class="w-10 h-10 rounded-full"
+                                    alt="Contact Image"
+                                />
                                 <h1 class="text-lg p-1.5 py-2">
                                     {{ contact.name }}
                                 </h1>

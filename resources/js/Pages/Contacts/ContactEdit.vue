@@ -1,33 +1,83 @@
 <script setup>
 import BlankUser from "@/Components/BlankUser.vue";
+import ImageUpload from "@/Components/ImageUpload.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
 
-const form = useForm({
-    name: "",
-    email: "",
-    phone: "",
+const props = defineProps({
+    contact: Object,
 });
+
+const form = useForm({
+    id: props.contact.id,
+    name: props.contact.name,
+    email: props.contact.email,
+    phone: props.contact.phone,
+    image: Object,
+});
+
+const submit = () => {
+    form.post(route("contact.update", form.id), {
+        _method: "PUT",
+        preserveState: true,
+        onFinish: () => form.reset("name", "email", "phone"),
+    });
+};
+
+const deleteContact = () => {
+    form.delete(route("contact.destroy", form.id), {
+        onFinish: () => form.reset("name", "email", "phone"),
+    });
+};
 </script>
 
 <template>
-    <Head title="Edit - Nick Dillon" />
+    <Head title="Edit Contact" />
 
     <div class="pt-12 bg-white">
         <div class="mx-auto px-7">
             <div class="text-center mx-auto">
                 <div class="flex justify-center">
-                    <BlankUser class="mb-2.5 w-20 h-20 text-2xl">N</BlankUser>
+                    <BlankUser
+                        v-if="!contact.image"
+                        class="mb-2.5 w-20 h-20 text-2xl"
+                        >{{ contact.initial }}</BlankUser
+                    >
                 </div>
-                <h1 class="text-3xl font-bold">Nick Dillon</h1>
+                <h1 class="text-3xl font-bold">
+                    {{ form.name }}
+                </h1>
             </div>
 
             <div class="w-full sm:max-w-md mt-3.5 py-4 overflow-hidden">
                 <form @submit.prevent="submit">
                     <div>
+                        <div class="flex flex-wrap justify-center">
+                            <div
+                                class="w-6/12 flex flex-col items-center justify-center"
+                            >
+                                <label class="cursor-pointer">
+                                    <img
+                                        :src="props.contact.image"
+                                        class="w-30 h-40 rounded-full"
+                                        alt="Contact Image"
+                                    />
+                                    <ImageUpload />
+                                    <input
+                                        id="image"
+                                        name="image"
+                                        type="file"
+                                        @input="
+                                            form.image = $event.target.files[0]
+                                        "
+                                        class="hidden"
+                                    />
+                                </label>
+                            </div>
+                        </div>
                         <InputLabel for="name" value="Name" />
 
                         <TextInput
@@ -77,11 +127,23 @@ const form = useForm({
 
                     <div class="flex items-center mt-4">
                         <PrimaryButton
-                            class="flex justify-center w-full mt-3 py-2 bg-red-400 border-2 hover:bg-white hover:border-red-400 hover:text-red-400"
+                            class="flex justify-center w-full mt-3 py-2 bg-indigo-500 border-2 hover:bg-white hover:border-indigo-500 hover:text-indigo-500"
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
                         >
                             Update
+                        </PrimaryButton>
+                    </div>
+                </form>
+
+                <form @submit.prevent="deleteContact">
+                    <div class="flex items-center">
+                        <PrimaryButton
+                            class="flex justify-center w-full mt-3 py-2 bg-red-500 border-2 hover:bg-white hover:border-red-500 hover:text-red-500"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                        >
+                            Delete
                         </PrimaryButton>
                     </div>
                 </form>
