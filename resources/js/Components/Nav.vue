@@ -83,7 +83,7 @@ const back = () => window.history.back();
                     as="button"
                     class="tracking-wide cursor-pointer"
                     ><h1
-                        class="tracking-wide border-b-[3px] border-slate-700 hover:border-red-400 transition ease-in-out duration-150 px-1 py-1"
+                        class="text-slate-800 tracking-wide border-b-[3px] border-slate-700 hover:border-red-400 transition ease-in-out duration-150 px-1 py-1"
                     >
                         Login
                     </h1>
@@ -100,7 +100,7 @@ const back = () => window.history.back();
                 as="button"
                 class="tracking-wide cursor-pointer"
                 ><h1
-                    class="tracking-wide border-b-2 border-slate-700 hover:border-red-400 transition ease-in-out duration-150 px-1 py-1"
+                    class="text-slate-800 tracking-wide border-b-[3px] border-slate-700 hover:border-red-400 transition ease-in-out duration-150 px-1 py-1"
                 >
                     Login
                 </h1>

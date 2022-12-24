@@ -87,7 +87,7 @@ const contactInitial = computed(() => {
                                 <img
                                     v-else
                                     :src="'/storage/' + contact.image"
-                                    class="w-10 h-10 rounded-full"
+                                    class="w-10 max-h-10 rounded-full"
                                     alt="Contact Image"
                                 />
                                 <h1 class="text-lg p-1.5 py-2">

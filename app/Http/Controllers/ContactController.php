@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request as FacadesRequest;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ContactController extends Controller
 {

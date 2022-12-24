@@ -4,7 +4,7 @@ import Nav from "@/Components/Nav.vue";
 
 <template>
     <div
-        class="md:max-w-sm justify-center mx-auto md:border-[10px] md:border-slate-900 min-h-screen rounded-[30px]"
+        class="md:max-w-sm justify-center mx-auto md:border-[10px] md:border-slate-900 h-[880px] rounded-[30px] mt-5 mb-5"
     >
         <div class="bg-slate-900 relative">
             <div class="absolute top-0 inset-x-0 invisible md:visible">

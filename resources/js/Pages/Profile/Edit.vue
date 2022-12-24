@@ -13,10 +13,10 @@ defineProps({
 <template>
     <Head title="Profile" />
 
-    <div class="py-2 mb-6 bg-white">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6">
+    <div class="py-2 px-5 mb-6 bg-white">
+        <div class="max-w-7xl mx-auto sm:px-3">
             <div
-                class="p-4 sm:p-8 mt-4 border-4 border-slate-600 shadow-lg rounded-lg"
+                class="p-4 sm:p-6"
             >
                 <UpdateProfileInformationForm
                     :must-verify-email="mustVerifyEmail"
@@ -26,13 +26,13 @@ defineProps({
             </div>
 
             <div
-                class="p-4 sm:p-8 border-4 border-slate-600 shadow-lg rounded-lg"
+                class="px-4 sm:px-6"
             >
                 <UpdatePasswordForm class="max-w-xl" />
             </div>
 
             <div
-                class="p-4 sm:p-8 border-4 border-slate-600 shadow-lg rounded-lg"
+                class="p-4 sm:p-6"
             >
                 <DeleteUserForm class="max-w-xl" />
             </div>

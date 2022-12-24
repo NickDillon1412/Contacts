@@ -62,10 +62,9 @@ const deleteContact = () => {
                                 <label class="cursor-pointer">
                                     <img
                                         :src="props.contact.image"
-                                        class="w-30 h-40 rounded-full"
+                                        class="w-50 h-40 rounded-xl mb-5"
                                         alt="Contact Image"
                                     />
-                                    <ImageUpload />
                                     <input
                                         id="image"
                                         name="image"

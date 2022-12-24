@@ -17,13 +17,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Auth/Login');
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', fn () => Inertia::render('Auth/Login'));
 
 Route::middleware('auth')->group(function () {
     Route::get('/{user:username}/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,9 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('contacts')->group(function () {
         Route::get('/contacts-list', [ContactController::class, 'index'])->name('contacts.list');
 
-        Route::get('/create-contact', function () {
-            return Inertia::render('Contacts/ContactCreate');
-        })->name('contact.create');
+        Route::get('/create-contact', fn () => Inertia::render('Contacts/ContactCreate'))->name('contact.create');
 
         Route::post('/create-contact', [ContactController::class, 'store'])->name('contact.store');
 
