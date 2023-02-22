@@ -76,7 +76,7 @@ const contacts = props.contacts.data;
                     :key="contact.id"
                     class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                 >
-                    <Link :href="`/contacts/${contact.id}/edit`">
+                    <Link :href="route('contact.edit', contact)">
                         <div
                             class="flex items-center justify-between mx-auto p-2.5 px-3"
                         >
