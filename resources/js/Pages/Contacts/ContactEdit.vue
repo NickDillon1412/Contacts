@@ -5,7 +5,6 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
-import { processSlotOutlet } from "@vue/compiler-core";
 
 const props = defineProps({
     contact: Object,
