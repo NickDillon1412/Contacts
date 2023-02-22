@@ -1,6 +1,5 @@
 <script setup>
 import BlankUser from "@/Components/BlankUser.vue";
-import ImageUpload from "@/Components/ImageUpload.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
