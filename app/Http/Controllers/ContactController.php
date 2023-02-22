@@ -14,9 +14,9 @@ class ContactController extends Controller
     public function index()
     {
         return Inertia::render('Contacts/Contacts', [
-            'contacts' => ContactResource::collection(Contact::query()->where('user_id', '=', auth()->user()->id)->when(FacadesRequest::input('search'), function ($query, $search) {
+            'contacts' => Contact::query()->where('user_id', '=', auth()->user()->id)->when(FacadesRequest::input('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
-            })->latest()->get()),
+            })->latest()->get(),
             'filters' => FacadesRequest::only(['search'])
         ]);
     }
@@ -59,6 +59,7 @@ class ContactController extends Controller
             ]
         ]);
     }
+
     public function update(Request $request, Contact $contact)
     {
 

@@ -37,8 +37,6 @@ const contactInitial = computed(() => {
 
     return filteredInitials;
 });
-
-const contacts = props.contacts.data;
 </script>
 
 <template>
