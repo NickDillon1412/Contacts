@@ -70,7 +70,7 @@ const contactInitial = computed(() => {
         <div class="mx-auto">
             <div class="bg-white overflow-hidden text-slate-800">
                 <div
-                    v-for="(contact, i) in contacts"
+                    v-for="(contact, i) in contacts.data"
                     :key="contact.id"
                     class="even:bg-gray-100 border-b border-gray-200 hover:bg-gray-300"
                 >

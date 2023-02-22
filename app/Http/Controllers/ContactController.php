@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use App\Http\Resources\ContactResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
@@ -14,9 +14,9 @@ class ContactController extends Controller
     public function index()
     {
         return Inertia::render('Contacts/Contacts', [
-            'contacts' => Contact::query()->where('user_id', '=', auth()->user()->id)->when(FacadesRequest::input('search'), function ($query, $search) {
+            'contacts' => ContactResource::collection(Contact::query()->where('user_id', '=', auth()->user()->id)->when(FacadesRequest::input('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
-            })->latest()->get(),
+            })->latest()->get()),
             'filters' => FacadesRequest::only(['search'])
         ]);
     }
