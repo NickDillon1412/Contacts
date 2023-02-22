@@ -5,17 +5,18 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
+import { processSlotOutlet } from "@vue/compiler-core";
 
 const props = defineProps({
     contact: Object,
 });
 
 const form = useForm({
-    id: props.contact.id,
-    name: props.contact.name,
-    email: props.contact.email,
-    phone: props.contact.phone,
-    image: Object,
+    id: props.contact.data.id,
+    name: props.contact.data.name,
+    email: props.contact.data.email,
+    phone: props.contact.data.phone,
+    image: props.contact.data.image,
 });
 
 const submit = () => {
@@ -41,7 +42,7 @@ const deleteContact = () => {
             <div class="text-center mx-auto">
                 <div class="flex justify-center">
                     <BlankUser
-                        v-if="!contact.image"
+                        v-if="!contact.data.image"
                         class="mb-2.5 w-20 h-20 text-2xl"
                         >{{ contact.initial }}</BlankUser
                     >
@@ -60,7 +61,7 @@ const deleteContact = () => {
                             >
                                 <label class="cursor-pointer">
                                     <img
-                                        :src="props.contact.image"
+                                        :src="form.image"
                                         class="w-50 h-40 rounded-xl mb-5"
                                         alt="Contact Image"
                                     />

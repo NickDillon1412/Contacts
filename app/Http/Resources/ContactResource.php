@@ -17,7 +17,7 @@ class ContactResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image' => $this->image,
+            'image' => asset('storage/' . $this->image),
             'email' => $this->email,
             'phone' => $this->phone
         ];

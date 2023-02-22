@@ -49,14 +49,7 @@ class ContactController extends Controller
     public function edit(Contact $contact)
     {
         return Inertia::render('Contacts/ContactEdit', [
-            'contact' => [
-                'id' => $contact->id,
-                'initial' => substr($contact->name, 0, 1),
-                'image' => asset('storage/' . $contact->image),
-                'name' => $contact->name,
-                'email' => $contact->email,
-                'phone' => $contact->phone,
-            ]
+            'contact' => ContactResource::make($contact)
         ]);
     }
 
