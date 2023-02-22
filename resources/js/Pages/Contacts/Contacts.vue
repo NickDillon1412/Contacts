@@ -31,7 +31,7 @@ watch(
 );
 
 const contactInitial = computed(() => {
-    const filteredInitials = props.contacts
+    const filteredInitials = props.contacts.data
         .filter((contact) => contact.name)
         .map((contact) => contact.name[0]);
 
