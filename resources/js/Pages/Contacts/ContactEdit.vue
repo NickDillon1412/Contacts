@@ -7,7 +7,7 @@ import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
-    contact: Object,
+    contact: Array,
 });
 
 const form = useForm({
@@ -47,7 +47,7 @@ const deleteContact = () => {
                     >
                 </div>
                 <h1 class="text-3xl font-bold">
-                    {{ form.name }}
+                    {{ contact.data.name }}
                 </h1>
             </div>
 

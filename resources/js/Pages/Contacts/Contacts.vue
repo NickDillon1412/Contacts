@@ -61,7 +61,6 @@ const contactInitial = computed(() => {
                 id="search"
                 type="text"
                 class="block w-full mb-6"
-                autocomplete=""
                 placeholder="Search..."
                 v-model="search"
             />
