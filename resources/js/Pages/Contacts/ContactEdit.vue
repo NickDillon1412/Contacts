@@ -7,7 +7,7 @@ import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
-    contact: Array,
+    contact: Object,
 });
 
 const form = useForm({
