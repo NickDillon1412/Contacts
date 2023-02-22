@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return Inertia::render('Contacts/Contacts', [
             'contacts' => ContactResource::collection(Contact::query()->where('user_id', '=', auth()->user()->id)->when(FacadesRequest::input('search'), function ($query, $search) {
