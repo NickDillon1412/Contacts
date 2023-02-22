@@ -46,17 +46,18 @@ class ContactController extends Controller
         return redirect()->route('contacts.list');
     }
 
-    public function edit(Contact $contact)
+    public function edit($id)
     {
         return Inertia::render('Contacts/ContactEdit', [
-            'contact' => [
-                'id' => $contact->id,
-                'initial' => substr($contact->name, 0, 1),
-                'image' => asset('storage/' . $contact->image),
-                'name' => $contact->name,
-                'email' => $contact->email,
-                'phone' => $contact->phone,
-            ]
+            // 'contact' => [
+            //     'id' => $contact->id,
+            //     'initial' => substr($contact->name, 0, 1),
+            //     'image' => asset('storage/' . $contact->image),
+            //     'name' => $contact->name,
+            //     'email' => $contact->email,
+            //     'phone' => $contact->phone,
+            // ]
+            'contact' => Contact::findOrFail($id)
         ]);
     }
     public function update(Request $request, Contact $contact)
